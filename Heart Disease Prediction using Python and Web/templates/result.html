@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Heart Disease Prediction</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://127.0.0.1:5000">Heart Disease Detector</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="http://127.0.0.1:5000/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About US</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="container">
+            <h2 class="text-center mt-3">Heart Disease Detector</h2>
+        </div>
+        <table class = "p-3 table">
+          <thead>
+            <tr>
+              <th scope="col">Paitient Details</th>
+              <th scope="col">Paitient Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Patient Name</td>
+              <td>{{ name }}</td>
+            </tr>
+            <tr>
+              <td> Patient Age </td> 
+              <td> {{ age }} years</td>
+            </tr>
+            <tr>
+            <td> Patient Sex </td>
+            <td>
+                {% if sex %}
+                    Male 
+                {% else %}
+                    Female
+                {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>Patient Chest Pain Type:</td>
+            <td>
+              {% if cp==1 %}
+                Atypical angina 
+              {% elif cp==2 %}
+                Non — anginal pain
+              {% elif cp==3 %}
+                Asymptotic
+              {% else %}
+                Typical angina
+              {% endif %}
+            </td>
+          </tr>
+            <tr> 
+              <td>Patient Blood Pressure </td>
+              <td>{{ trestbps }} mmHg</td>
+            </tr>
+            <tr> 
+              <td>Patient Cholestrol</td> 
+              <td>{{ chol }} mg/dl</td>
+            </tr>
+            <tr>
+              <td>Fasting blood sugar (fasting blood sugar > 120 mg/dl)</td>
+              <td>
+              {% if fbs %}
+                True
+              {% else %}
+                False
+              {% endif %}
+            </td>
+            </tr>
+            <tr> 
+              <td>Patient resting electrocardiographic results</td>
+              <td>
+              {% if restecg==1 %}
+                having ST-T wave abnormality 
+              {% elif restecg==2 %}
+                left ventricular hyperthrophy
+              {% else %}
+                Normal
+              {% endif %}
+            </td>
+            </tr>
+            <tr>
+              <td> Patient max heart rate achieved</td>
+              <td> {{ thalach }}</td>
+            </tr>
+            <tr>
+              <td> Exercise induced angina </td>
+              <td>
+              {% if exang %}
+                True
+              {% else %}
+                False
+              {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td>ST depression induced by exercise relative to rest</td> 
+              <td>{{ oldpeak }}</td>
+            </tr>
+            <tr>
+              <td>Peak exercise ST segment</td>
+              <td>
+              {% if slope==1 %}
+                Flat 
+              {% elif slope==2 %}
+                Downsloping
+              {% else %}
+                Upsloping
+              {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td>Number of major vessels colored by flourosopy</td> 
+              <td>{{ ca }}</td>
+            </tr>
+            <tr>
+              <td>Patient Thalasemia </td>
+              <td>
+              {% if thal==1 %}
+                Normal 
+              {% elif thal==2 %}
+                Fixed defect
+              {% else %}
+                Reversible defect
+              {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td><h4><strong>Heart Disease Result</strong></h4></td>
+              <td>
+                {% if result == 1 %}
+                  <h4><strong>You have heart disease</strong></h4>
+                {% elif result == 2 %}
+                  <h4><strong>You have a possibility of heart disease</strong></h4>
+                {% else %}
+                  <h4><strong>You have no heart disease</strong></h4>
+                {% endif %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <form class="p-3" action="http://127.0.0.1:5000/">
+            <button class="btn btn-primary">Go Back</button>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

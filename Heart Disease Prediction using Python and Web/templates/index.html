@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Heart Disease Prediction</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">Heart Disease Detector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://127.0.0.1:5000/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About US</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container">
+          <h2 class="text-center mt-3">Heart Disease Detector</h2>
+      </div>
+
+      <form class="p-3" action="{{ url_for('result') }}" method="POST">
+        <div class="form-group">
+          <label for="name">Enter Patient Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter Patient Name">
+        </div>
+        <div class="form-group">
+          <label for="age">Enter Patient Age (in years)</label>
+          <input type="text" class="form-control" id="age" name="age" placeholder="Enter Patient Age">
+        </div>
+        <div class="form-group">
+          <label for="sex">Enter Patient Gender</label>
+          <select class="form-control" id="sex" name="sex">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="cp">Enter Patient Chest Pain Type</label>
+            <select class="form-control" id="cp" name="cp">
+              <option value="0">Typical angina</option>
+              <option value="1">Atypical angina</option>
+              <option value="2">Non — anginal pain</option>
+              <option value="3">Asymptotic</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="trestbps">Enter Patient Blood Pressure (in mmHg )(normal:- 80/140)</label>
+            <input type="text" class="form-control" id="trestbps" name="trestbps" placeholder="Enter Patient Blood Pressure">
+          </div>
+          <div class="form-group">
+            <label for="chol">Enter Patient Cholestrol (in mg/dl ) (normal:- around 200)</label>
+            <input type="text" class="form-control" id="chol" name="chol" placeholder="Enter Patient Cholestrol">
+          </div>
+          <div class="form-group">
+            <label for="fbs">Enter Patient Fasting blood sugar (fasting blood sugar > 120 mg/dl)</label>
+            <select class="form-control" id="fbs" name="fbs">
+              <option value="0">False</option>
+              <option value="1">True</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="restecg">Enter Patient resting electrocardiographic results</label>
+            <select class="form-control" id="restecg" name="restecg">
+              <option value="0">Normal</option>
+              <option value="1">having ST-T wave abnormality</option>
+              <option value="2">left ventricular hyperthrophy</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="thalach">Enter Patient max heart rate achieved (Normal: 80-110)</label>
+            <input type="text" class="form-control" id="thalach" name="thalach" placeholder="Enter Patient max heart rate achieved">
+          </div>
+          <div class="form-group">
+            <label for="exang">Enter Patient Exercise induced angina</label>
+            <select class="form-control" id="exang" name="exang">
+              <option value="0">False</option>
+              <option value="1">True</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="oldpeak">Enter ST depression induced by exercise relative to rest ( 0 - 4)</label>
+            <input type="text" class="form-control" id="oldpeak" name="oldpeak" placeholder="Enter ST depression induced by exercise relative to rest">
+          </div>
+          <div class="form-group">
+            <label for="slope">Enter Peak exercise ST segment</label>
+            <select class="form-control" id="slope" name="slope">
+              <option value="0">Upsloping</option>
+              <option value="1">Flat</option>
+              <option value="2">Downsloping</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ca">Enter Number of major vessels colored by flourosopy( 0 - 4)</label>
+            <input type="text" class="form-control" id="ca" name="ca" placeholder="Enter Number of major vessels colored by flourosopy">
+          </div>
+          <div class="form-group">
+            <label for="thal">Enter patient thalassemia</label>
+            <select class="form-control" id="thal" name="thal">
+              <option value="1">Normal</option>
+              <option value="2">Fixed defect</option>
+              <option value="3">Reversible defect</option>
+            </select>
+          </div>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
